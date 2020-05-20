@@ -20,6 +20,6 @@
     "dev": "parcel src/app/index.html",
     "clean": "rm -rf dist",
     "prebuild": "yarn clean",
-    "build": "parcel build src/app/index.html"
+    "build": "parcel build src/app/index.html --public-url /portfolio/dist"
   }
 }
