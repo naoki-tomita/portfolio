@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>私のポートフォリオ</h1>
+  <h2>作ったもの</h2>
+  <dl id="items"></dl>
+  <script>
+    const createdItems = [
+      { url: "foo", title: "foo", description: "foodesu" },
+      { url: "", title: "", description: "" },
+      { url: "", title: "", description: "" },
+      { url: "", title: "", description: "" },
+      { url: "", title: "", description: "" },
+      { url: "", title: "", description: "" },
+      { url: "", title: "", description: "" },
+      { url: "", title: "", description: "" },
+      { url: "", title: "", description: "" },
+      { url: "", title: "", description: "" },
+      { url: "", title: "", description: "" },
+      { url: "", title: "", description: "" },
+      { url: "", title: "", description: "" },
+      { url: "", title: "", description: "" },
+    ];
+    items.innerHTML = createdItems.map(it => `<dt><a href="${it.url}">${it.title}</a></dt><dd>${it.description}</dd>`).join("");
+  </script>
+</body>
+</html>

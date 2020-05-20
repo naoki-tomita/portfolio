@@ -19,9 +19,10 @@ function random() {
   return Math.random().toString(32).substring(2);
 }
 
+const About = "https://naoki-tomita.github.io/portfolio/about.html"
 function useChrome() {
   const [state, setState] = useState<ChromeState>({
-    tabs: [{ id: "initial", title: "blank", url: "" }],
+    tabs: [{ id: "initial", title: "about", url: About }],
     selectedTab: "initial",
   });
   return {
@@ -67,8 +68,6 @@ interface State {
   element?: HTMLIFrameElement;
 }
 
-const Home = "https://naoki-tomita.github.io/blog/dist/index.html"
-
 export const Chrome: React.FC = () => {
   const { tabs, currentTab, selectTab, addTab, setUrlToCurrentTab, closeTab } = useChrome();
   const [state, setState] = useState<State>({ url: "" });
@@ -93,7 +92,7 @@ export const Chrome: React.FC = () => {
       <BackButton onClick={() => console.log("backward")} />
       <ForwardButton onClick={() => console.log("forward")} />
       <ReloadButton onClick={() => (setUrlToCurrentTab(""), setTimeout(() => setUrlToCurrentTab(state.url), 100)) } />
-      <HomeButton onClick={() => setUrl(Home)} />
+      <HomeButton onClick={() => setUrl(About)} />
       <AddressBar
         value={state.url}
         onChange={e => setState({ ...state, url: e.target.value })}

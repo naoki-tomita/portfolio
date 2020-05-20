@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import { Button } from "./Button";
-import { IconDefinition, faHome, faBlog, faQuestion, faCog, faHandPointer, faCube, faMapMarked, faWrench, faBrain, faGamepad } from "@fortawesome/free-solid-svg-icons";
+import { IconDefinition, faHome, faBlog, faQuestion, faCog, faHandPointer, faCube, faMapMarked, faWrench, faBrain, faGamepad, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Background = styled.div`
@@ -10,6 +10,7 @@ const Background = styled.div`
 `;
 
 const Favorites: { title: string, icon: IconDefinition, url: string }[] = [
+  { title: "About", icon: faUser, url: "https://naoki-tomita.github.io/portfolio/about.html" },
   { title: "Home", icon: faHome, url: "https://naoki-tomita.github.io/blog/dist/index.html" },
   { title: "dnevnik(blog1)", icon: faBlog, url: "https://kojiro-ueda-dnevnik.herokuapp.com/" },
   { title: "dolphin(inline-chat)", icon: faQuestion, url: "https://naoki-tomita.github.io/inline-chat/index.html" },
