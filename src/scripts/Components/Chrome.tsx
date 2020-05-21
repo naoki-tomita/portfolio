@@ -2,6 +2,7 @@ import * as React from "react";
 import { Tab, Tabs, AddTab } from "./Tab";
 import { AddressBar, Menu, ReloadButton, BackButton, ForwardButton, HomeButton } from "./Menu";
 import { FavoriteBar } from "./Favorites";
+import svg from "../../images/loading.svg";
 const { useState } = React;
 
 interface TabData {
@@ -69,11 +70,22 @@ interface State {
 }
 
 export const Chrome: React.FC = () => {
-  const { tabs, currentTab, selectTab, addTab, setUrlToCurrentTab, closeTab } = useChrome();
-  const [state, setState] = useState<State>({ url: "" });
-  function setUrl(url: string) {
-    setState({ url });
+  const { tabs, currentTab, selectTab, addTab, setUrlToCurrentTab, setTitleToCurrentTab, closeTab } = useChrome();
+  const [state, setState] = useState<State>({ url: About });
+  const [loading, setLoading] = useState<boolean>(true);
+  async function setUrl(url: string) {
+    if (url === currentTab.url) {
+      return reload();
+    }
+    setLoading(true);
+    setState({ ...state, url });
     setUrlToCurrentTab(url);
+  }
+
+  function reload() {
+    setLoading(true),
+    setUrlToCurrentTab(""),
+    setTimeout(() => setUrlToCurrentTab(state.url), 100)
   }
 
   return (
@@ -82,26 +94,34 @@ export const Chrome: React.FC = () => {
       {tabs.map(it =>
         <Tab
           onClose={() => (closeTab(it.id))}
-          onClick={() => (selectTab(it.id), setState({ url: tabs.find(tab => tab.id === it.id).url }))}
+          onClick={() => (selectTab(it.id), setState({ ...state, url: tabs.find(tab => tab.id === it.id).url }))}
           key={it.id}
           selected={it.id === currentTab.id}
+          icon={loading && it.id === currentTab.id ? svg : undefined}
         >{it.title}</Tab>)}
-      <AddTab onClick={() => (addTab(), setState({ url: "" }))} />
+      <AddTab onClick={() => (addTab(), setState({ ...state, url: "" }))} />
     </Tabs>
     <Menu>
       <BackButton onClick={() => console.log("backward")} />
       <ForwardButton onClick={() => console.log("forward")} />
-      <ReloadButton onClick={() => (setUrlToCurrentTab(""), setTimeout(() => setUrlToCurrentTab(state.url), 100)) } />
-      <HomeButton onClick={() => setUrl(About)} />
+      <ReloadButton onClick={reload} />
+      <HomeButton onClick={() => (setUrl(About))} />
       <AddressBar
         value={state.url}
         onChange={e => setState({ ...state, url: e.target.value })}
-        onKeyPress={({ key }) => (key === "Enter") && (setUrlToCurrentTab(state.url))} />
+        onKeyPress={({ key }) => (key === "Enter") && (setUrlToCurrentTab(state.url), setLoading(true))} />
     </Menu>
     <FavoriteBar onClick={(url) => setUrl(url)}  />
+    <div style={{ borderBottom: "solid 1px #bbb" }} />
     <iframe width="100%"
-      ref={el => (el != null && state.element == null)
-        && (fullHeight(el), setState({ ...state, element: el }))}
+      ref={(el: HTMLIFrameElement | null) =>
+        (el != null && state.element == null)
+        && (
+          console.log("foo"),
+          fullHeight(el),
+          el.addEventListener("load", () => setLoading(false)),
+          setState({ ...state, element: el })
+        )}
       style={{ border: "none", margin: 0, padding: 0, verticalAlign: "bottom" }}
       src={currentTab.url}
     />

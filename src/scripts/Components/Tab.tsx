@@ -28,13 +28,13 @@ const TabOuter = styled.div<Props>`
   align-items: center;
   max-width: 220px;
   width: 220px;
-  padding: 0 18px;
-  padding-left: ${({ icon }) => icon ? 0 : 18}px;
+  padding: 0 8px;
 `;
 
 export const Tab: React.FC<Props & { onClose: () => void }> = ({ selected, icon, onClick, onClose, children }) =>
   <TabOuter selected={selected} icon={icon} onClick={onClick}>
-    {children}
+    {icon ? <img style={{ width: "24px" }} src={icon} /> : <div style={{ minWidth: "24px" }}></div>}
+    <div style={{ width: "100%", marginLeft: "8px" }}>{children}</div>
     <Button onClick={(e) => (e.stopPropagation(), onClose())}><FontAwesomeIcon icon={faTimes} /></Button>
   </TabOuter>
 
