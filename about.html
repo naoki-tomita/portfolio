@@ -13,19 +13,20 @@
     const createdItems = [
       { title: "About", description: "このページ。", url: "https://naoki-tomita.github.io/portfolio/about.html" },
       { title: "Home", description: "ブログを書いてみようと思って作った。hyperapp製", url: "https://naoki-tomita.github.io/blog/dist/index.html" },
-      { title: "dnevnik(blog1)", description: "自作フレームワーク(zheleznaya, summer)で作ったブログ。フロントからバックエンドまで全部手製。", url: "https://kojiro-ueda-dnevnik.herokuapp.com/" },
+      { title: "dnevnik(blog1)", description: "自作フレームワーク(zheleznaya, summer)で作ったブログ。フロントからバックエンドまで全部手製。Herokuなので、もう動きません。", url: "https://github.com/naoki-tomita/dnevnik" },
       { title: "dolphin(inline-chat)", description: "ページ内に埋め込むカスタマーサポート用のチャットシステム。いちおうCS向けの画面もある。", url: "https://naoki-tomita.github.io/inline-chat/index.html" },
       { title: "blog2", description: "意味なくブログをたくさん作るのが趣味です。", url: "https://simple-blog-ef2c7.web.app/" },
-      { title: "GraphQlApp", description: "GraphQLサーバーを雰囲気で一から書いてみた。実際Apolloとかと比べたら、全然違ったのでびっくりした。", url: "https://graph-ql-ueda.herokuapp.com/" },
-      { title: "RustApp", description: "フロントもバックエンドもRustで書いたTodoアプリ。デザインになんとかかんとかという考え方を取り入れています。", url: "https://webassembly-todo-app.herokuapp.com/" },
-      { title: "Draft", description: "転職ドラフトのよさそうな人をピックアップして、みんなで投票するシステム。デモなので、真面目に使わないでください。", url: "https://ten-draft.herokuapp.com/" },
+      { title: "blog3", description: "意味なくブログをたくさん作るのが趣味です。", url: "https://naoki-tomita.github.io/micro-cms-blog/dist/" },
+      { title: "GraphQlApp", description: "GraphQLサーバーを雰囲気で一から書いてみた。実際Apolloとかと比べたら、全然違ったのでびっくりした。Herokuなので、もう動きません。", url: "https://graph-ql-ueda.herokuapp.com/" },
+      { title: "RustApp", description: "フロントもバックエンドもRustで書いたTodoアプリ。デザインになんとかかんとかという考え方を取り入れています。Herokuなので、もう動きません。", url: "https://webassembly-todo-app.herokuapp.com/" },
+      { title: "Draft", description: "転職ドラフトのよさそうな人をピックアップして、みんなで投票するシステム。デモなので、真面目に使わないでください。Herokuなので、もう動きません。", url: "https://ten-draft.herokuapp.com/" },
       { title: "3D", description: "自力でCanvas上に3Dモデルを表示するところまでやる3Dエンジン。カメラの向きを変えるためにベクトルの勉強が必要で進んでない。ホントはカメラの向きを変えたい。", url: "https://naoki-tomita.github.io/first-3d-engine/dist/" },
       { title: "Route", description: "地図に全ルートを入力したあと、区間の距離を計測したりできるやつ。", url: "https://naoki-tomita.github.io/old-siori/dist" },
       { title: "TestApp", description: "ReatHooksを色々勉強しようとしたやつ。", url: "https://wizardly-babbage-e7f43d.netlify.com/" },
       { title: "BBS", description: "Vue.jsとFirebaseで作った2ch。", url: "https://brave-jang-8f2dbd.netlify.com/" },
       { title: "Tetris", description: "ゲーム性ゼロのテトリス。一部バグがある。", url: "https://naoki-tomita.github.io/tetris.js/" },
       { title: "zheleznaya", description: "ReactのようなJSXを使って書けるフロントエンドフレームワークのドキュメント。ステート管理もできる。zheleznayaを作って作られています。", url: "https://zheleznaya.netlify.app/" },
-      { title: "nzxt", description: "zheleznayaのサーバーサイドフレームワークのドキュメント。もちろんnzxtを使って作られています。", url: "https://nzxt-docs.herokuapp.com/" },
+      { title: "nzxt", description: "zheleznayaのサーバーサイドフレームワークのドキュメント。もちろんnzxtを使って作られています。", url: "https://www.nzxt-docs.tk/" },
     ];
     items.innerHTML = createdItems.map(it => `<dt><a href="${it.url}">${it.title}</a></dt><dd>${it.description}</dd>`).join("");
   </script>
